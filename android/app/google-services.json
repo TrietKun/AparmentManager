@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "583238683026",
+    "project_id": "resieasy-6ac13",
+    "storage_bucket": "resieasy-6ac13.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583238683026:android:6b5e2343821a70a2ae994b",
+        "android_client_info": {
+          "package_name": "com.example.ResiEasy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7ETkjGHnB_RE-QhM_01ANDjSdxPG3VmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:583238683026:android:3ebe8f1926fcd65eae994b",
+        "android_client_info": {
+          "package_name": "com.iuh.resieasy"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7ETkjGHnB_RE-QhM_01ANDjSdxPG3VmM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
