@@ -4,10 +4,13 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'views/intropage.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
+
+// Khai báo biến toàn cục cho FlutterLocalNotificationsPlugin
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
 // Hàm xử lý thông báo trong chế độ nền
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
-  // Xử lý thông báo khi ứng dụng ở chế độ nền
   print("Handling a background message: ${message.messageId}");
 }
 
@@ -16,41 +19,63 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  
+  print('currentPlatform: ${DefaultFirebaseOptions.currentPlatform}');
 
-  // Yêu cầu quyền nhận thông báo (chỉ trên iOS)
+  String? token = await FirebaseMessaging.instance.getToken();
+  print('Token: $token');
+
   await FirebaseMessaging.instance.requestPermission(
     alert: true,
     badge: true,
     sound: true,
   );
 
-  // Lắng nghe thông báo khi ứng dụng đang chạy
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Received a message while in foreground!');
-    print('Message data: ${message.data}');
+  // Khởi tạo thông báo
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('@mipmap/ic_launcher'); // Đảm bảo biểu tượng đúng
 
+  final InitializationSettings initializationSettings = InitializationSettings(
+    android: initializationSettingsAndroid,
+  );
+
+  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  // Đăng ký lắng nghe thông báo
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print('Message data: ${message}');
+    
     if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification}');
+      print('Message also contained a notification: ${message.notification!.body}');
+      _showNotification(message); // Gọi hàm hiển thị thông báo
     }
   });
 
-  // Lắng nghe thông báo khi ứng dụng ở chế độ nền
-  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-  // Lắng nghe thông báo khi ứng dụng đang chạy
-  FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
-    print('A new onMessageOpenedApp event was published!');
-    print('Message data: ${message.data}');
-  });
-
-  // Lấy FCM Token
-  try {
-    var token = await FirebaseMessaging.instance.getToken();
-    print('FCM Token: $token');
-  } catch (e) {
-    print('Error getting FCM token: $e');
-  }
-
   runApp(const MyApp());
+}
+
+Future<void> _showNotification(RemoteMessage message) async {
+  const AndroidNotificationDetails androidPlatformChannelSpecifics =
+      AndroidNotificationDetails(
+    'your_channel_id',
+    'your_channel_name',
+    importance: Importance.max,
+    priority: Priority.high,
+    showWhen: false,
+    channelDescription: 'your_channel_description',
+  );
+
+  const NotificationDetails platformChannelSpecifics = NotificationDetails(
+    android: androidPlatformChannelSpecifics,
+  );
+
+  await flutterLocalNotificationsPlugin.show(
+    0,
+    message.notification?.title,
+    message.notification?.body,
+    platformChannelSpecifics,
+    payload: 'item x',
+  );
 }
 
 class MyApp extends StatefulWidget {

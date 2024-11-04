@@ -7,7 +7,7 @@ class ApiBill {
 
     Future<List<Bill>> getBillById(String id, int page, int limit) async {
         try {
-            Response response = await dio.get('http://localhost:5001/api/bill/get-bills-by-apartment/$id/$page/$limit');
+            Response response = await dio.get('http://192.168.100.161:5001/api/bill/get-bills-by-apartment/$id/$page/$limit');
             if (response.statusCode == 200) {
                 final data = response.data['data']['data'];
                 List<Bill> bills = [];

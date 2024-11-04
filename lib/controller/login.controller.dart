@@ -104,6 +104,7 @@ class LoginController {
         MaterialPageRoute(builder: (context) => HomePage()),
       );
     } catch (e) {
+      print(e);
       Navigator.of(context).pop(); 
       showCupertinoDialog(
         context: context,

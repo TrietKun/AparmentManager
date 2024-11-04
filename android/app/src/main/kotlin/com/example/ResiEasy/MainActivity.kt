@@ -1,4 +1,4 @@
-package com.example.apartment_manager_user
+package com.example.ResiEasy
 
 import io.flutter.embedding.android.FlutterActivity
 

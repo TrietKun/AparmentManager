@@ -46,7 +46,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '583238683026',
     projectId: 'resieasy-6ac13',
     authDomain: 'resieasy-6ac13.firebaseapp.com',
-    storageBucket: 'resieasy-6ac13.appspot.com',
+    storageBucket: 'resieasy-6ac13.firebasestorage.app',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
@@ -54,16 +54,16 @@ class DefaultFirebaseOptions {
     appId: '1:583238683026:android:6b5e2343821a70a2ae994b',
     messagingSenderId: '583238683026',
     projectId: 'resieasy-6ac13',
-    storageBucket: 'resieasy-6ac13.appspot.com',
+    storageBucket: 'resieasy-6ac13.firebasestorage.app',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
     apiKey: 'AIzaSyD6PUU9vhnReaBVCGhxKQIrS3DkPWqycMA',
-    appId: '1:583238683026:ios:5a7fd60bfd1de16dae994b',
+    appId: '1:583238683026:ios:717b6fb06cf13b05ae994b',
     messagingSenderId: '583238683026',
     projectId: 'resieasy-6ac13',
-    storageBucket: 'resieasy-6ac13.appspot.com',
-    iosBundleId: 'com.example.ResiEasy',
+    storageBucket: 'resieasy-6ac13.firebasestorage.app',
+    iosBundleId: 'com.example.apartmentManagerUser',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
@@ -71,7 +71,7 @@ class DefaultFirebaseOptions {
     appId: '1:583238683026:ios:717b6fb06cf13b05ae994b',
     messagingSenderId: '583238683026',
     projectId: 'resieasy-6ac13',
-    storageBucket: 'resieasy-6ac13.appspot.com',
+    storageBucket: 'resieasy-6ac13.firebasestorage.app',
     iosBundleId: 'com.example.apartmentManagerUser',
   );
 
@@ -81,7 +81,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '583238683026',
     projectId: 'resieasy-6ac13',
     authDomain: 'resieasy-6ac13.firebaseapp.com',
-    storageBucket: 'resieasy-6ac13.appspot.com',
+    storageBucket: 'resieasy-6ac13.firebasestorage.app',
   );
 
 }

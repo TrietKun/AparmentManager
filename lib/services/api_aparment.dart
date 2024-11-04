@@ -9,7 +9,7 @@ class ApiAparment {
   Future<Aparment> getAparmentById(String id) async {
     try {
       // Gọi API lấy thông tin căn hộ theo id
-      Response response = await _dio.get('http://localhost:5001/api/apartment/get-detail-apartment/$id');
+      Response response = await _dio.get('http://192.168.100.161:5001/api/apartment/get-detail-apartment/$id');
 
       if (response.statusCode == 200) {
         // Giả định rằng phản hồi trả về thông tin căn hộ trong trường 'data'

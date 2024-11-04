@@ -8,7 +8,7 @@ class ApiAuth {
   Future<User> login(String username, String password) async {
   try {
     // Gọi API login
-    Response response = await _dio.post('http://localhost:5001/api/auth/login', data: {
+    Response response = await _dio.post('http://192.168.100.161:5001/api/auth/login', data: {
       'username': 'resieasy.iuh@gmail.com',
       'password': 'admin', 
     });
