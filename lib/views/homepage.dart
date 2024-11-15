@@ -22,7 +22,7 @@ class HomePageState extends State<HomePage> {
 
   final List<Widget> _widgetOptions = [
     HomeContent(),
-    BillPage(),
+    const BillPage(),
     SettingsPage(),
   ];
 

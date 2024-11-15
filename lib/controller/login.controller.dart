@@ -43,7 +43,7 @@ class LoginController {
         loginbyemail();
         Navigator.pushReplacement(
           context,
-          MaterialPageRoute(builder: (context) => HomePage()),
+          MaterialPageRoute(builder: (context) => const HomePage()),
         );
       }
     } on PlatformException catch (e) {
@@ -101,7 +101,7 @@ class LoginController {
       Get.put<User>(user!);
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => HomePage()),
+        MaterialPageRoute(builder: (context) => const HomePage()),
       );
     } catch (e) {
       print(e);

@@ -25,7 +25,7 @@ class Intro extends StatelessWidget {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) =>  LoginPage()),
+            MaterialPageRoute(builder: (context) =>  const LoginPage()),
           );
         },
         child: const Icon(Icons.arrow_forward),

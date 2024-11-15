@@ -446,7 +446,7 @@ class _BillPageState extends State<BillPage> {
                         // Xử lý khi bấm nút
                         Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) =>  Allbillpage()),
+                            MaterialPageRoute(builder: (context) =>  const Allbillpage()),
                           );
                       },
                       child: const Text(

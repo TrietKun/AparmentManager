@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ViewVnPay extends StatefulWidget {
+  const ViewVnPay({super.key});
+
   @override
   _ViewVnPayState createState() => _ViewVnPayState();
 }
@@ -20,7 +22,7 @@ class _ViewVnPayState extends State<ViewVnPay> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('VNPAY')),
+      appBar: AppBar(title: const Text('VNPAY')),
       body: WebView(
         initialUrl: 'https://sandbox.vnpayment.vn/paymentv2/vpcpay.html',
         javascriptMode: JavascriptMode.unrestricted,

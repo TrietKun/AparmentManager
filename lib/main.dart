@@ -7,7 +7,8 @@ import 'views/intropage.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 // Khai báo biến toàn cục cho FlutterLocalNotificationsPlugin
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
+final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
 
 // Hàm xử lý thông báo trong chế độ nền
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -19,11 +20,11 @@ Future<void> main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  
+
   print('currentPlatform: ${DefaultFirebaseOptions.currentPlatform}');
 
   String? token = await FirebaseMessaging.instance.getToken();
-  print('Token: $token');
+  print('Token????????: $token');
 
   await FirebaseMessaging.instance.requestPermission(
     alert: true,
@@ -33,20 +34,25 @@ Future<void> main() async {
 
   // Khởi tạo thông báo
   const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('@mipmap/ic_launcher'); // Đảm bảo biểu tượng đúng
+      AndroidInitializationSettings(
+          '@mipmap/ic_launcher'); // Đảm bảo biểu tượng đúng
 
-  final InitializationSettings initializationSettings = InitializationSettings(
+  const InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
   );
 
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  // await flutterLocalNotificationsPlugin.initialize(initializationSettings); nếu android còn ios thì thêm ios
+  if (DefaultFirebaseOptions.currentPlatform == TargetPlatform.android) {
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  } else {}
 
   // Đăng ký lắng nghe thông báo
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Message data: ${message}');
-    
+    // print('Message data: ${message.notification}');
+
     if (message.notification != null) {
-      print('Message also contained a notification: ${message.notification!.body}');
+      print(
+          'Message also contained a notification: ${message.notification!.body}');
       _showNotification(message); // Gọi hàm hiển thị thông báo
     }
   });
@@ -63,6 +69,7 @@ Future<void> _showNotification(RemoteMessage message) async {
     priority: Priority.high,
     showWhen: false,
     channelDescription: 'your_channel_description',
+    icon: '@mipmap/ic_launcher', // Đảm bảo chỉ định biểu tượng hợp lệ
   );
 
   const NotificationDetails platformChannelSpecifics = NotificationDetails(
@@ -79,7 +86,7 @@ Future<void> _showNotification(RemoteMessage message) async {
 }
 
 class MyApp extends StatefulWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   State<MyApp> createState() => _MyAppState();

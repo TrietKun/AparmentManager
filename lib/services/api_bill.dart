@@ -27,7 +27,7 @@ class ApiBill {
                 throw Exception('Lấy thông tin hóa đơn thất bại: ${response.data['message']}');
             }
         }  catch (e) {
-            throw Exception('Lấy thông tin hóa đơn thất bại: ${e}');
+            throw Exception('Lấy thông tin hóa đơn thất bại: $e');
         }
     }
 }
