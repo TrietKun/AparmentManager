@@ -13,10 +13,10 @@ class ApiBill {
                 List<Bill> bills = [];
                 for (var item in data) {
                     Bill bill = Bill(
-                        price: item['price'] ?? 0.0,
-                        electric: item['electric'] ?? 0.0,
-                        water: item['water'] ?? 0.0,
-                        total: item['total'] ?? 0.0,
+                        price: item['price'] ?? 0,
+                        electric: item['electric'] ?? 0,
+                        water: item['water'] ?? 0,
+                        total: item['total'] ?? 0,
                         date: DateTime.parse(item['date'] ?? ''),
                     );
                     bills.add(bill);

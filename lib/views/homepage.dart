@@ -1,5 +1,6 @@
 import 'package:apartment_manager_user/models/aparment.dart';
 import 'package:apartment_manager_user/models/user.dart';
+import 'package:apartment_manager_user/views/chatbox.dart';
 import 'package:flutter/material.dart';
 import 'package:apartment_manager_user/views/billpage.dart';
 import 'package:apartment_manager_user/views/settingpage.dart';
@@ -24,6 +25,7 @@ class HomePageState extends State<HomePage> {
     HomeContent(),
     const BillPage(),
     SettingsPage(),
+    ChatScreen()
   ];
 
   void _onItemTapped(int index) {
@@ -50,6 +52,10 @@ class HomePageState extends State<HomePage> {
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
             label: 'Cài Đặt',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.chat),
+            label: 'Chatbot',
           ),
         ],
         currentIndex: _selectedIndex,
